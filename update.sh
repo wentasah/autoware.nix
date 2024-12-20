@@ -15,4 +15,4 @@ popd
 mkdir -p pkgs
 rm pkgs/*
 # shellcheck disable=SC2046
-ros2nix --flake --output-as-nix-pkg-name --output-dir pkgs --fetch $(find . -name package.xml|grep -v ament_cmake)
+ros2nix --output-as-nix-pkg-name --output-dir pkgs --fetch $(find . -name package.xml|grep -v ament_cmake)
