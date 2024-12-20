@@ -9,6 +9,7 @@
     sha256 = lock.nodes.nixpkgs.locked.narHash;
   },
   system ? "x86_64-linux",
+  distro ? null,
 }:
 let
   inherit (builtins) intersectAttrs mapAttrs elem;
@@ -42,4 +43,6 @@ let
     else { "${prefix}${key}" = val; }
   ) attrs;
 in
-autowarePkgs
+if isNull distro
+then autowarePkgs
+else autowarePkgs.${distro}
