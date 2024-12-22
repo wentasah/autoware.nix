@@ -1,0 +1,55 @@
+From 178cb421d597cbcc9345e31a0e620294ee0e504d Mon Sep 17 00:00:00 2001
+From: Michal Sojka <michal.sojka@cvut.cz>
+Date: Sun, 22 Dec 2024 12:44:39 +0100
+Subject: [PATCH 1/2] autoware_universe_utils: Allow compiling against
+ boost/geometry >= 1.76
+
+---
+ src/geometry/random_concave_polygon.cpp | 6 ++++++
+ test/src/geometry/test_alt_geometry.cpp | 2 ++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/src/geometry/random_concave_polygon.cpp b/src/geometry/random_concave_polygon.cpp
+index aa3c2afab3..f6b30bc35a 100644
+--- a/src/geometry/random_concave_polygon.cpp
++++ b/src/geometry/random_concave_polygon.cpp
+@@ -20,7 +20,9 @@
+ #include <boost/geometry/algorithms/correct.hpp>
+ #include <boost/geometry/algorithms/intersects.hpp>
+ #include <boost/geometry/algorithms/is_valid.hpp>
++#if BOOST_VERSION < 107600
+ #include <boost/geometry/strategies/agnostic/hull_graham_andrew.hpp>
++#endif
+ 
+ #include <random>
+ 
+@@ -251,8 +253,12 @@ Polygon2d inward_denting(LinearRing2d & ring)
+ {
+   LinearRing2d convex_ring;
+   std::list<Point2d> q;
++#if BOOST_VERSION < 107600
+   boost::geometry::strategy::convex_hull::graham_andrew<LinearRing2d, Point2d> strategy;
+   boost::geometry::convex_hull(ring, convex_ring, strategy);
++#else
++  boost::geometry::convex_hull(ring, convex_ring);
++#endif
+   PolygonWithEdges polygon_with_edges;
+   polygon_with_edges.polygon.outer() = convex_ring;
+   polygon_with_edges.edges.resize(polygon_with_edges.polygon.outer().size());
+diff --git a/test/src/geometry/test_alt_geometry.cpp b/test/src/geometry/test_alt_geometry.cpp
+index 90dfb1ede4..7f6588016e 100644
+--- a/test/src/geometry/test_alt_geometry.cpp
++++ b/test/src/geometry/test_alt_geometry.cpp
+@@ -20,7 +20,9 @@
+ #include <boost/geometry/algorithms/correct.hpp>
+ #include <boost/geometry/algorithms/touches.hpp>
+ #include <boost/geometry/io/wkt/write.hpp>
++#if BOOST_VERSION < 107600
+ #include <boost/geometry/strategies/agnostic/hull_graham_andrew.hpp>
++#endif
+ 
+ #include <gtest/gtest.h>
+ 
+-- 
+2.46.0
+

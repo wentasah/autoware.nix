@@ -1,0 +1,28 @@
+From 98bc0c2ec81b803d63159acb06f3308d0fdac8fb Mon Sep 17 00:00:00 2001
+From: Michal Sojka <michal.sojka@cvut.cz>
+Date: Sun, 22 Dec 2024 13:12:20 +0100
+Subject: [PATCH 2/2] autoware_universe_utils: Don't treat maybe-uninitialized
+ warnings as errors
+
+Without this, we get a compile error inside Eigen header files (when
+compiled with Nix).
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f295662e69..824e4b4cdc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,6 +6,8 @@ option(BUILD_EXAMPLES "Build examples" OFF)
+ find_package(autoware_cmake REQUIRED)
+ autoware_package()
+ 
++add_compile_options(-Wno-error=maybe-uninitialized)
++
+ find_package(Boost REQUIRED)
+ 
+ find_package(fmt REQUIRED)
+-- 
+2.46.0
+
