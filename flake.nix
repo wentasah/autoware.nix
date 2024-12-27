@@ -27,7 +27,7 @@
           ];
         };
         rosDistros = filterAttrs (rosDistro: rosPkgs: rosPkgs ? overrideScope) pkgs.rosPackages;
-        supportedRosDistros = filterAttrs (n: v: ! elem n ["noetic" "foxy"]) rosDistros;
+        supportedRosDistros = filterAttrs (n: v: ! elem n ["noetic" "foxy" "iron" "rolling"]) rosDistros;
         autowarePkgs = mapAttrs
           (rosDistro: rosPkgs: recurseIntoAttrs (intersectAttrs (autowareOverlay null null) rosPkgs))
           supportedRosDistros;
