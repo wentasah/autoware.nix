@@ -1,4 +1,4 @@
-From 97673cc2247efababbe157b89b3341da6b70dad3 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Michal Sojka <michal.sojka@cvut.cz>
 Date: Sun, 22 Dec 2024 13:12:20 +0100
 Subject: [PATCH] autoware_universe_utils: Don't treat maybe-uninitialized

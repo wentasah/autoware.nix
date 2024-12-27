@@ -1,4 +1,4 @@
-From 142afd4dd6691199467497dc3971eab509f9d9e6 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Michal Sojka <michal.sojka@cvut.cz>
 Date: Fri, 27 Dec 2024 21:08:45 +0100
 Subject: [PATCH] velodyne_monitor: Remove libcpprest-dev from package.xml

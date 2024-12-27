@@ -1,4 +1,4 @@
-From 0e13cf40ce00c360967513b32def1e476b8272b6 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Michal Sojka <michal.sojka@cvut.cz>
 Date: Fri, 27 Dec 2024 23:23:19 +0100
 Subject: [PATCH] Don't treat warnings as errors
