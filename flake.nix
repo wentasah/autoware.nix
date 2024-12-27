@@ -7,7 +7,7 @@
     nix-ros-overlay.inputs.flake-utils.lib.eachDefaultSystem (system:
       let
         inherit (builtins) intersectAttrs mapAttrs elem;
-        inherit (pkgs.lib) filterAttrs concatMapAttrs recurseIntoAttrs;
+        inherit (pkgs.lib) filterAttrs concatMapAttrs recurseIntoAttrs isDerivation;
         autowareOverlay = import ./pkgs/overlay.nix;
         applyDistroOverlay =
           rosOverlay: rosPackages:
@@ -32,9 +32,11 @@
           (rosDistro: rosPkgs: recurseIntoAttrs (intersectAttrs (autowareOverlay null null) rosPkgs))
           supportedRosDistros;
         flatten = prefix: attrs: concatMapAttrs (key: val:
-          if val ? recurseForDerivations
+          if isDerivation val
+          then { "${prefix}${key}" = val; }
+          else if val ? recurseForDerivations
           then flatten "${prefix}${key}-" val
-          else { "${prefix}${key}" = val; }
+          else {}
         ) attrs;
       in {
         legacyPackages = autowarePkgs;
