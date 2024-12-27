@@ -1,0 +1,164 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Michal Sojka <michal.sojka@cvut.cz>
+Date: Sat, 28 Dec 2024 00:39:08 +0100
+Subject: [PATCH] system_monitor: Add missing included, fix compile errors
+
+---
+ include/system_monitor/cpu_monitor/cpu_monitor_base.hpp    | 2 ++
+ include/system_monitor/gpu_monitor/gpu_monitor_base.hpp    | 2 ++
+ include/system_monitor/mem_monitor/mem_monitor.hpp         | 2 ++
+ include/system_monitor/net_monitor/net_monitor.hpp         | 2 ++
+ include/system_monitor/ntp_monitor/ntp_monitor.hpp         | 2 ++
+ include/system_monitor/process_monitor/process_monitor.hpp | 2 ++
+ include/system_monitor/system_monitor_utility.hpp          | 1 +
+ include/system_monitor/voltage_monitor/voltage_monitor.hpp | 2 ++
+ reader/traffic_reader/traffic_reader_service.cpp           | 2 ++
+ src/hdd_monitor/hdd_monitor.cpp                            | 2 ++
+ src/voltage_monitor/voltage_monitor.cpp                    | 2 +-
+ 11 files changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/include/system_monitor/cpu_monitor/cpu_monitor_base.hpp b/include/system_monitor/cpu_monitor/cpu_monitor_base.hpp
+index a9bf7f17cd..66e9285536 100644
+--- a/include/system_monitor/cpu_monitor/cpu_monitor_base.hpp
++++ b/include/system_monitor/cpu_monitor/cpu_monitor_base.hpp
+@@ -20,6 +20,8 @@
+ #ifndef SYSTEM_MONITOR__CPU_MONITOR__CPU_MONITOR_BASE_HPP_
+ #define SYSTEM_MONITOR__CPU_MONITOR__CPU_MONITOR_BASE_HPP_
+ 
++#include <rclcpp/rclcpp.hpp>
++
+ #include <diagnostic_updater/diagnostic_updater.hpp>
+ 
+ #include <tier4_external_api_msgs/msg/cpu_status.hpp>
+diff --git a/include/system_monitor/gpu_monitor/gpu_monitor_base.hpp b/include/system_monitor/gpu_monitor/gpu_monitor_base.hpp
+index 9c4f6c7510..0d31a2b597 100644
+--- a/include/system_monitor/gpu_monitor/gpu_monitor_base.hpp
++++ b/include/system_monitor/gpu_monitor/gpu_monitor_base.hpp
+@@ -20,6 +20,8 @@
+ #ifndef SYSTEM_MONITOR__GPU_MONITOR__GPU_MONITOR_BASE_HPP_
+ #define SYSTEM_MONITOR__GPU_MONITOR__GPU_MONITOR_BASE_HPP_
+ 
++#include <rclcpp/rclcpp.hpp>
++
+ #include <diagnostic_updater/diagnostic_updater.hpp>
+ 
+ #include <climits>
+diff --git a/include/system_monitor/mem_monitor/mem_monitor.hpp b/include/system_monitor/mem_monitor/mem_monitor.hpp
+index 452e7bd291..7b37f8bebf 100644
+--- a/include/system_monitor/mem_monitor/mem_monitor.hpp
++++ b/include/system_monitor/mem_monitor/mem_monitor.hpp
+@@ -20,6 +20,8 @@
+ #ifndef SYSTEM_MONITOR__MEM_MONITOR__MEM_MONITOR_HPP_
+ #define SYSTEM_MONITOR__MEM_MONITOR__MEM_MONITOR_HPP_
+ 
++#include <rclcpp/rclcpp.hpp>
++
+ #include <diagnostic_updater/diagnostic_updater.hpp>
+ 
+ #include <climits>
+diff --git a/include/system_monitor/net_monitor/net_monitor.hpp b/include/system_monitor/net_monitor/net_monitor.hpp
+index 5aa2cc9790..7d2ebeff65 100644
+--- a/include/system_monitor/net_monitor/net_monitor.hpp
++++ b/include/system_monitor/net_monitor/net_monitor.hpp
+@@ -20,6 +20,8 @@
+ #ifndef SYSTEM_MONITOR__NET_MONITOR__NET_MONITOR_HPP_
+ #define SYSTEM_MONITOR__NET_MONITOR__NET_MONITOR_HPP_
+ 
++#include <rclcpp/rclcpp.hpp>
++
+ #include "system_monitor/net_monitor/nl80211.hpp"
+ #include "system_monitor/traffic_reader/traffic_reader_common.hpp"
+ 
+diff --git a/include/system_monitor/ntp_monitor/ntp_monitor.hpp b/include/system_monitor/ntp_monitor/ntp_monitor.hpp
+index db264d4b7e..160cd36299 100644
+--- a/include/system_monitor/ntp_monitor/ntp_monitor.hpp
++++ b/include/system_monitor/ntp_monitor/ntp_monitor.hpp
+@@ -20,6 +20,8 @@
+ #ifndef SYSTEM_MONITOR__NTP_MONITOR__NTP_MONITOR_HPP_
+ #define SYSTEM_MONITOR__NTP_MONITOR__NTP_MONITOR_HPP_
+ 
++#include <rclcpp/rclcpp.hpp>
++
+ #include <diagnostic_updater/diagnostic_updater.hpp>
+ 
+ #include <climits>
+diff --git a/include/system_monitor/process_monitor/process_monitor.hpp b/include/system_monitor/process_monitor/process_monitor.hpp
+index ec2a90c6b2..d7f7979f9e 100644
+--- a/include/system_monitor/process_monitor/process_monitor.hpp
++++ b/include/system_monitor/process_monitor/process_monitor.hpp
+@@ -20,6 +20,8 @@
+ #ifndef SYSTEM_MONITOR__PROCESS_MONITOR__PROCESS_MONITOR_HPP_
+ #define SYSTEM_MONITOR__PROCESS_MONITOR__PROCESS_MONITOR_HPP_
+ 
++#include <rclcpp/rclcpp.hpp>
++
+ #include "system_monitor/process_monitor/diag_task.hpp"
+ 
+ #include <diagnostic_updater/diagnostic_updater.hpp>
+diff --git a/include/system_monitor/system_monitor_utility.hpp b/include/system_monitor/system_monitor_utility.hpp
+index fc27757394..4c2745113a 100644
+--- a/include/system_monitor/system_monitor_utility.hpp
++++ b/include/system_monitor/system_monitor_utility.hpp
+@@ -21,6 +21,7 @@
+ #define SYSTEM_MONITOR__SYSTEM_MONITOR_UTILITY_HPP_
+ 
+ #include <boost/filesystem.hpp>
++#include <boost/filesystem/fstream.hpp>
+ #include <boost/foreach.hpp>
+ #include <boost/range.hpp>
+ 
+diff --git a/include/system_monitor/voltage_monitor/voltage_monitor.hpp b/include/system_monitor/voltage_monitor/voltage_monitor.hpp
+index 353755b3c8..88254418b1 100644
+--- a/include/system_monitor/voltage_monitor/voltage_monitor.hpp
++++ b/include/system_monitor/voltage_monitor/voltage_monitor.hpp
+@@ -20,6 +20,8 @@
+ #ifndef SYSTEM_MONITOR__VOLTAGE_MONITOR__VOLTAGE_MONITOR_HPP_
+ #define SYSTEM_MONITOR__VOLTAGE_MONITOR__VOLTAGE_MONITOR_HPP_
+ 
++#include <rclcpp/rclcpp.hpp>
++
+ #include <diagnostic_updater/diagnostic_updater.hpp>
+ 
+ #include <climits>
+diff --git a/reader/traffic_reader/traffic_reader_service.cpp b/reader/traffic_reader/traffic_reader_service.cpp
+index 927f1b175b..df2107c79b 100644
+--- a/reader/traffic_reader/traffic_reader_service.cpp
++++ b/reader/traffic_reader/traffic_reader_service.cpp
+@@ -22,6 +22,8 @@
+ #include <boost/archive/text_oarchive.hpp>
+ #include <boost/process.hpp>
+ 
++#include <fstream>
++
+ #include <fmt/format.h>
+ #include <signal.h>
+ #include <syslog.h>
+diff --git a/src/hdd_monitor/hdd_monitor.cpp b/src/hdd_monitor/hdd_monitor.cpp
+index 50ac4363da..c44971e558 100644
+--- a/src/hdd_monitor/hdd_monitor.cpp
++++ b/src/hdd_monitor/hdd_monitor.cpp
+@@ -17,6 +17,8 @@
+  * @brief HDD monitor class
+  */
+ 
++#include <rclcpp/rclcpp.hpp>
++
+ #include "system_monitor/hdd_monitor/hdd_monitor.hpp"
+ 
+ #include "system_monitor/hdd_reader/hdd_reader.hpp"
+diff --git a/src/voltage_monitor/voltage_monitor.cpp b/src/voltage_monitor/voltage_monitor.cpp
+index fda75c2153..ff92a1326b 100644
+--- a/src/voltage_monitor/voltage_monitor.cpp
++++ b/src/voltage_monitor/voltage_monitor.cpp
+@@ -120,7 +120,7 @@ void VoltageMonitor::checkVoltage(diagnostic_updater::DiagnosticStatusWrapper &
+         voltage = std::stof(voltageString);
+       } catch (std::regex_error & e) {
+         stat.summary(DiagStatus::WARN, "format error");
+-        stat.add("exception in std::regex_search ", fmt::format("{}", e.code()));
++        stat.add("exception in std::regex_search ", fmt::format("{}", e.what()));
+         return;
+       }
+       break;
+-- 
+2.46.0
+

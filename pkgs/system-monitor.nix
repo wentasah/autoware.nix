@@ -12,6 +12,9 @@ buildRosPackage rec {
   };
 
   buildType = "ament_cmake";
+  patches = [
+    ./0001-system_monitor-Add-missing-included-fix-compile-erro.patch
+  ];
   sourceRoot = "${src.name}/system/system_monitor/";
   buildInputs = [ ament-cmake-auto autoware-cmake ];
   checkInputs = [ ament-cmake-ros ament-lint-auto autoware-lint-common ];
