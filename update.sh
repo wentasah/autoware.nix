@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
-url=https://github.com/autowarefoundation/autoware.git
-if [[ $(git --git-dir=autoware/.git remote get-url origin) = "$url" ]]; then
-   git pull
-else
-    git clone $url
-fi
+for url in \
+    https://github.com/autowarefoundation/autoware.git \
+    https://github.com/astuff/pacmod3_msgs.git
+do
+    dir=$(basename $url .git)
+    if [[ $(git --git-dir="$dir"/.git remote get-url origin) = "$url" ]]; then
+       git pull
+    else
+        git clone $url
+    fi
+done
 
 pushd autoware
 mkdir -p src
