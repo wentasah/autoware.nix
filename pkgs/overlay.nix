@@ -272,6 +272,7 @@ self: super:
   nebula-sensor-driver = super.callPackage ./nebula-sensor-driver.nix {};
   nebula-tests = super.callPackage ./nebula-tests.nix {};
   pacmod-interface = super.callPackage ./pacmod-interface.nix {};
+  pacmod3-msgs = super.callPackage ./pacmod3-msgs.nix {};
   pandar-description = super.callPackage ./pandar-description.nix {};
   pandar-msgs = super.callPackage ./pandar-msgs.nix {};
   perception-online-evaluator = super.callPackage ./perception-online-evaluator.nix {};

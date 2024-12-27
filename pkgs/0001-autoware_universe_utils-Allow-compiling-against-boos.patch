@@ -1,7 +1,7 @@
-From 178cb421d597cbcc9345e31a0e620294ee0e504d Mon Sep 17 00:00:00 2001
+From 72299127112ec14248fcbe02051463e6297094d1 Mon Sep 17 00:00:00 2001
 From: Michal Sojka <michal.sojka@cvut.cz>
 Date: Sun, 22 Dec 2024 12:44:39 +0100
-Subject: [PATCH 1/2] autoware_universe_utils: Allow compiling against
+Subject: [PATCH] autoware_universe_utils: Allow compiling against
  boost/geometry >= 1.76
 
 ---

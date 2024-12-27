@@ -14,7 +14,7 @@ buildRosPackage rec {
   buildType = "ament_cmake";
   patches = [
     ./0001-autoware_universe_utils-Allow-compiling-against-boos.patch
-    ./0002-autoware_universe_utils-Don-t-treat-maybe-uninitiali.patch
+    ./0001-autoware_universe_utils-Don-t-treat-maybe-uninitiali.patch
   ];
   sourceRoot = "${src.name}/common/autoware_universe_utils/";
   buildInputs = [ ament-cmake-auto autoware-cmake ];

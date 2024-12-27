@@ -2,13 +2,13 @@
 { lib, buildRosPackage, fetchFromGitHub, ament-cmake-auto, ament-lint-auto, ament-lint-common, autoware-perception-msgs, builtin-interfaces, rosidl-default-generators, rosidl-default-runtime, sensor-msgs, std-msgs }:
 buildRosPackage rec {
   pname = "ros-rolling-autoware-internal-perception-msgs";
-  version = "1.2.0";
+  version = "1.3.0";
 
   src = fetchFromGitHub {
     owner = "autowarefoundation";
     repo = "autoware_internal_msgs";
-    rev = "13968e8f6b650073194057c3c792470eb37f8360";
-    sha256 = "1wy9d6flf4p8rw8p95qhcg31xxa2ws7ssjsazwpqr30w3yz6nvxi";
+    rev = "36a9d2e24e28a3826ff40fad657e19836b4a418e";
+    sha256 = "1bv7j1xx2x4pbnaydmzsk6j277vdmanisys005xpms8pgazxflym";
   };
 
   buildType = "ament_cmake";
