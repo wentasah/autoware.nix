@@ -12,6 +12,9 @@ buildRosPackage rec {
   };
 
   buildType = "ament_cmake";
+  patches = [
+    ./0001-Don-t-treat-warnings-as-errors.patch
+  ];
   sourceRoot = "${src.name}/autoware_cmake/";
   checkInputs = [ ament-lint-auto autoware-lint-common ];
   propagatedBuildInputs = [ ament-cmake-auto ament-lint-auto ros-environment ];

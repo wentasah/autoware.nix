@@ -1,0 +1,26 @@
+From 0e13cf40ce00c360967513b32def1e476b8272b6 Mon Sep 17 00:00:00 2001
+From: Michal Sojka <michal.sojka@cvut.cz>
+Date: Fri, 27 Dec 2024 23:23:19 +0100
+Subject: [PATCH] Don't treat warnings as errors
+
+When compiling with Nix, we get many errors due to this.
+---
+ cmake/autoware_package.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/autoware_package.cmake b/cmake/autoware_package.cmake
+index 85233ea..a602f4e 100644
+--- a/cmake/autoware_package.cmake
++++ b/cmake/autoware_package.cmake
+@@ -20,7 +20,7 @@ macro(autoware_package)
+     set(CMAKE_CXX_EXTENSIONS OFF)
+   endif()
+   if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+-    add_compile_options(-Wall -Wextra -Wpedantic -Werror)
++    add_compile_options(-Wall -Wextra -Wpedantic)
+   endif()
+ 
+   # Ignore PCL errors in Clang
+-- 
+2.46.0
+
