@@ -35,13 +35,8 @@ let
   rosDistros = filterAttrs (rosDistro: rosPkgs: rosPkgs ? overrideScope) pkgs.rosPackages;
   supportedRosDistros = filterAttrs (n: v: ! elem n ["noetic" "foxy"]) rosDistros;
   autowarePkgs = mapAttrs
-    (rosDistro: rosPkgs: recurseIntoAttrs (intersectAttrs (autowareOverlay null null) rosPkgs))
+    (rosDistro: rosPkgs: intersectAttrs (autowareOverlay null null) rosPkgs)
     supportedRosDistros;
-  flatten = prefix: attrs: concatMapAttrs (key: val:
-    if val ? recurseForDerivations
-    then flatten "${prefix}${key}-" val
-    else { "${prefix}${key}" = val; }
-  ) attrs;
 in
 if isNull distro
 then autowarePkgs
