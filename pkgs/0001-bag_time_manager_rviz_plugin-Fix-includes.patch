@@ -1,0 +1,47 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Michal Sojka <michal.sojka@cvut.cz>
+Date: Sat, 28 Dec 2024 09:37:02 +0100
+Subject: [PATCH] bag_time_manager_rviz_plugin: Fix includes
+
+---
+ src/bag_time_manager_panel.cpp | 6 +++---
+ src/bag_time_manager_panel.hpp | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/bag_time_manager_panel.cpp b/src/bag_time_manager_panel.cpp
+index 79da89bd9e..6824ac3608 100644
+--- a/src/bag_time_manager_panel.cpp
++++ b/src/bag_time_manager_panel.cpp
+@@ -16,9 +16,9 @@
+ 
+ #include "bag_time_manager_panel.hpp"
+ 
+-#include <qt5/QtWidgets/QHBoxLayout>
+-#include <qt5/QtWidgets/QLabel>
+-#include <qt5/QtWidgets/QWidget>
++#include <QHBoxLayout>
++#include <QLabel>
++#include <QWidget>
+ #include <rviz_common/display_context.hpp>
+ 
+ namespace rviz_plugins
+diff --git a/src/bag_time_manager_panel.hpp b/src/bag_time_manager_panel.hpp
+index 2cc4b98a6d..661c20fb70 100644
+--- a/src/bag_time_manager_panel.hpp
++++ b/src/bag_time_manager_panel.hpp
+@@ -17,9 +17,9 @@
+ #ifndef BAG_TIME_MANAGER_PANEL_HPP_
+ #define BAG_TIME_MANAGER_PANEL_HPP_
+ 
+-#include <qt5/QtWidgets/QComboBox>
+-#include <qt5/QtWidgets/QLabel>
+-#include <qt5/QtWidgets/QPushButton>
++#include <QComboBox>
++#include <QLabel>
++#include <QPushButton>
+ #include <rclcpp/rclcpp.hpp>
+ #include <rosbag2_interfaces/srv/pause.hpp>
+ #include <rosbag2_interfaces/srv/resume.hpp>
+-- 
+2.46.0
+

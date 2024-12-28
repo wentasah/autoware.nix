@@ -12,6 +12,9 @@ buildRosPackage rec {
   };
 
   buildType = "ament_cmake";
+  patches = [
+    ./0001-bag_time_manager_rviz_plugin-Fix-includes.patch
+  ];
   sourceRoot = "${src.name}/common/bag_time_manager_rviz_plugin/";
   buildInputs = [ ament-cmake-auto autoware-cmake ];
   checkInputs = [ ament-lint-auto autoware-lint-common ];
