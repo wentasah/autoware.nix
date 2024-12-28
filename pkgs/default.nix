@@ -8,9 +8,9 @@ let
     // builtins.mapAttrs (
       rosDistro: rosPkgs: if rosPkgs ? overrideScope then rosPkgs.overrideScope rosOverlay else rosPkgs
     ) rosPackages;
-  rosDistroOverlays = self: super: {
+  rosDistroOverlays = final: prev: {
     # Apply the overlay to multiple ROS distributions
-    rosPackages = applyDistroOverlay (import ./overlay.nix) super.rosPackages;
+    rosPackages = applyDistroOverlay (import ./overlay.nix) prev.rosPackages;
   };
 in
 import nix-ros-overlay {
