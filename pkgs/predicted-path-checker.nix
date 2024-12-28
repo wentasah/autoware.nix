@@ -12,6 +12,9 @@ buildRosPackage rec {
   };
 
   buildType = "ament_cmake";
+  patches = [
+    ./0001-predicted_path_checker-Allow-compiling-with-boost-1..patch
+  ];
   sourceRoot = "${src.name}/control/predicted_path_checker/";
   buildInputs = [ ament-cmake autoware-cmake ];
   checkInputs = [ ament-cmake-ros ament-lint-auto autoware-lint-common eigen ];
