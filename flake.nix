@@ -1,6 +1,6 @@
 {
   inputs = {
-    nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay/develop";
+    nix-ros-overlay.url = "github:wentasah/nix-ros-overlay/lanelet2-maps-fix-cmake";
     nixpkgs.follows = "nix-ros-overlay/nixpkgs";  # IMPORTANT!!!
   };
   outputs = { self, nix-ros-overlay, nixpkgs }:
