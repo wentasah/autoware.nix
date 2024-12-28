@@ -12,6 +12,9 @@ buildRosPackage rec {
   };
 
   buildType = "ament_cmake";
+  patches = [
+    ./0001-llh_converter-Teach-cmake-how-to-find-GeographicLib.patch
+  ];
   buildInputs = [ ament-cmake-auto ];
   checkInputs = [ ament-lint-auto ament-lint-common ];
   propagatedBuildInputs = [ geographiclib ];
