@@ -1,0 +1,27 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Michal Sojka <michal.sojka@cvut.cz>
+Date: Sat, 28 Dec 2024 13:51:28 +0100
+Subject: [PATCH] autonomous_emergency_braking: Allow compiling with boost >=
+ 1.76
+
+---
+ src/node.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/node.cpp b/src/node.cpp
+index 846a7654d7..d656f74a0c 100644
+--- a/src/node.cpp
++++ b/src/node.cpp
+@@ -30,7 +30,9 @@
+ #include <boost/geometry/algorithms/correct.hpp>
+ #include <boost/geometry/algorithms/intersection.hpp>
+ #include <boost/geometry/algorithms/within.hpp>
++#if BOOST_VERSION < 107600
+ #include <boost/geometry/strategies/agnostic/hull_graham_andrew.hpp>
++#endif
+ 
+ #include <pcl/PCLPointCloud2.h>
+ #include <pcl/filters/crop_hull.h>
+-- 
+2.46.0
+

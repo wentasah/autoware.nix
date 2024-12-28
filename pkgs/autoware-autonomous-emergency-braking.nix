@@ -12,6 +12,9 @@ buildRosPackage rec {
   };
 
   buildType = "ament_cmake";
+  patches = [
+    ./0001-autonomous_emergency_braking-Allow-compiling-with-bo.patch
+  ];
   sourceRoot = "${src.name}/control/autoware_autonomous_emergency_braking/";
   buildInputs = [ ament-cmake autoware-cmake ];
   checkInputs = [ ament-cmake-ros ament-index-cpp ament-lint-auto autoware-lint-common autoware-test-utils ];
