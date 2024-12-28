@@ -12,6 +12,9 @@ buildRosPackage rec {
   };
 
   buildType = "ament_cmake";
+  patches = [
+    ./0001-autoware_tracking_object_merger-Remove-Werror.patch
+  ];
   sourceRoot = "${src.name}/perception/autoware_tracking_object_merger/";
   buildInputs = [ ament-cmake-auto autoware-cmake eigen3-cmake-module ];
   checkInputs = [ ament-lint-auto autoware-lint-common ];
