@@ -26,6 +26,3 @@ index faf4e9d383..2435cb0ee4 100644
    <depend>nav_msgs</depend>
    <depend>pcl_conversions</depend>
    <depend>pcl_msgs</depend>
--- 
-2.46.0
-

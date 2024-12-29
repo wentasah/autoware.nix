@@ -42,6 +42,3 @@ index 2cc4b98a6d..661c20fb70 100644
  #include <rclcpp/rclcpp.hpp>
  #include <rosbag2_interfaces/srv/pause.hpp>
  #include <rosbag2_interfaces/srv/resume.hpp>
--- 
-2.46.0
-

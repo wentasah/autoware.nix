@@ -20,6 +20,3 @@ index 9b17ee0546..8873c3cf8a 100644
  endif()
  
  find_package(autoware_cmake REQUIRED)
--- 
-2.46.0
-

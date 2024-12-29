@@ -22,6 +22,3 @@ index 846a7654d7..d656f74a0c 100644
  
  #include <pcl/PCLPointCloud2.h>
  #include <pcl/filters/crop_hull.h>
--- 
-2.46.0
-

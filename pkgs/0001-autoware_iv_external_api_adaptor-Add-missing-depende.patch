@@ -20,6 +20,3 @@ index 23a83de..7890b66 100644
    <depend>autoware_adapi_specs</depend>
    <depend>autoware_component_interface_specs</depend>
    <depend>autoware_component_interface_utils</depend>
--- 
-2.46.0
-

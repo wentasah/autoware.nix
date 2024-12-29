@@ -21,6 +21,3 @@ index 665e6ab87c..3232c72297 100644
    <depend>rclcpp</depend>
    <depend>rclcpp_components</depend>
    <depend>std_msgs</depend>
--- 
-2.46.0
-

@@ -20,6 +20,3 @@ index 0b58afa330..814ec85762 100644
    <depend>diagnostic_msgs</depend>
    <depend>rclcpp</depend>
    <depend>rclcpp_components</depend>
--- 
-2.46.0
-

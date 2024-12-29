@@ -23,6 +23,3 @@ index f295662e69..824e4b4cdc 100644
  find_package(Boost REQUIRED)
  
  find_package(fmt REQUIRED)
--- 
-2.46.0
-
