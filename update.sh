@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -ev
 
 for url in \
     https://github.com/autowarefoundation/autoware.git \
@@ -24,7 +24,7 @@ vcs import src < autoware.repos
 vcs custom src --git --args cherry-pick HEAD..autoware.nix || :
 popd
 
-mkdir -p pkgs
-rm pkgs/*
+mkdir pkgs.new
 # shellcheck disable=SC2046
-ros2nix --output-as-nix-pkg-name --output-dir pkgs --fetch --patches $(find . -name package.xml|grep -v ament_cmake)
+ros2nix --output-as-nix-pkg-name --output-dir pkgs.new --fetch --patches $(find . -name package.xml|grep -v ament_cmake)
+mv --backup=numbered -T pkgs.new pkgs
