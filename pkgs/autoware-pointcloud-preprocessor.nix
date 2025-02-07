@@ -13,7 +13,7 @@ buildRosPackage rec {
 
   buildType = "ament_cmake";
   patches = [
-    ./0001-autoware_pointcloud_preprocessor-Add-missing-depende.patch
+    ./0001-chore-autoware_pointcloud_preprocessor-Add-missing-d.patch
   ];
   sourceRoot = "${src.name}/sensing/autoware_pointcloud_preprocessor/";
   buildInputs = [ ament-cmake-auto autoware-cmake ];

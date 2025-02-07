@@ -1,7 +1,8 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Michal Sojka <michal.sojka@cvut.cz>
 Date: Sat, 28 Dec 2024 13:06:36 +0100
-Subject: [PATCH] autoware_pointcloud_preprocessor: Add missing dependencies
+Subject: [PATCH] chore(autoware_pointcloud_preprocessor): Add missing
+ dependencies
 
 GMP is required in CMakeLists.txt. MPFR is required by GMP not
 installed by default with GMP (Debian GMP package has MPFR dependency

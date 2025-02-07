@@ -13,7 +13,7 @@ buildRosPackage rec {
 
   buildType = "ament_cmake";
   patches = [
-    ./0001-diagnostic_graph_aggregator-Add-missing-dependency-a.patch
+    ./0001-chore-diagnostic_graph_aggregator-Add-missing-depend.patch
   ];
   sourceRoot = "${src.name}/system/diagnostic_graph_aggregator/";
   buildInputs = [ ament-cmake-auto autoware-cmake ];

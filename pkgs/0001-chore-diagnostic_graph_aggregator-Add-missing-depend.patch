@@ -1,7 +1,7 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Michal Sojka <michal.sojka@cvut.cz>
 Date: Fri, 27 Dec 2024 23:48:28 +0100
-Subject: [PATCH] diagnostic_graph_aggregator: Add missing dependency
+Subject: [PATCH] chore(diagnostic_graph_aggregator): Add missing dependency
  ament_index_cpp
 
 ---
