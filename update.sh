@@ -20,7 +20,8 @@ mkdir -p src
 vcs custom src --git --args tag --force autoware.nix
 # Update repositories
 vcs import src < autoware.repos
-# Reapply custom patches (cherry-pick fails on empty commit ranges so we have to ignore all errors)
+# Reapply custom patches (cherry-pick fails on empty commit ranges so
+# we have to ignore all errors)
 vcs custom src --git --args cherry-pick HEAD..autoware.nix || :
 popd
 
