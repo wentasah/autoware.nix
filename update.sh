@@ -27,5 +27,5 @@ popd
 
 mkdir pkgs.new
 # shellcheck disable=SC2046
-ros2nix --output-as-nix-pkg-name --output-dir pkgs.new --fetch --patches $(find . -name package.xml|grep -v ament_cmake)
+ros2nix --output-as-nix-pkg-name --output-dir pkgs.new --fetch --use-per-package-src --patches $(find . -name package.xml|grep -v ament_cmake)
 mv --backup=numbered -T pkgs.new pkgs
